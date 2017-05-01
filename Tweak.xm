@@ -4,20 +4,22 @@
 NSBundle *bundle = [[[NSBundle alloc] initWithPath:kBundlePath] autorelease];
 NSString *sound = [bundle pathForResource:@"volume" ofType:@"aiff"];
 
-%hook VolumeControl
--(void) increaseVolume {
+static void playOSX() {
   SystemSoundID soundID;
   AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:sound], &soundID);
   AudioServicesPlaySystemSound(soundID);
+}
+
+%hook VolumeControl
+-(void) increaseVolume {
+  playOSX();
   return %orig;
 }
 %end
 
 %hook VolumeControl
 -(void) decreaseVolume {
-  SystemSoundID soundID;
-  AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:sound], &soundID);
-  AudioServicesPlaySystemSound(soundID);
+  playOSX();
   return %orig;
 }
 %end
