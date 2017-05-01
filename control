@@ -1,0 +1,9 @@
+Package: nl.d4ni.osxvolumesound
+Name: OSXVolumeSound
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Dani Winter <mail@daniwinter.nl>
+Author: Dani Winter <mail@daniwinter.nl>
+Section: Tweaks
