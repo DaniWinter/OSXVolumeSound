@@ -15,9 +15,6 @@ static void playOSX() {
   playOSX();
   return %orig;
 }
-%end
-
-%hook VolumeControl
 -(void) decreaseVolume {
   playOSX();
   return %orig;
